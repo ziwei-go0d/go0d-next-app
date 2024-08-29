@@ -9,6 +9,8 @@ RUN npm run build
 
 FROM node:18-alpine
 WORKDIR /app
+RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
