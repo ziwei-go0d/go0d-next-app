@@ -14,6 +14,3 @@ COPY --from=builder /app/_next /app/_next
 COPY --from=builder /app/public /app/public
 
 CMD ["npm", "start"]
-
-ENV GOOGLE_CLOUD_PROJECT="adept-ethos-433722-c3"
-ENV GOOGLE_CLOUD_LOGS_BUCKET_BEHAVIOR=CLOUD_LOGGING_ONLY
