@@ -10,7 +10,10 @@ RUN npm run build
 FROM node:18-alpine
 WORKDIR /app
 
-COPY --from=builder /app/_next /app/_next
-COPY --from=builder /app/public /app/public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+USER nextjs
+ENV NODE_ENV production
 
 CMD ["npm", "start"]
